@@ -66,7 +66,7 @@ class EnumTest extends \PHPUnit\Framework\TestCase
      */
     public function testToString($expected, $enumObject)
     {
-        $this->assertSame($expected, (string) $enumObject);
+        $this->assertSame($expected, (string)$enumObject);
     }
 
     public function toStringProvider()
@@ -74,7 +74,7 @@ class EnumTest extends \PHPUnit\Framework\TestCase
         return array(
             array(EnumFixture::FOO, new EnumFixture(EnumFixture::FOO)),
             array(EnumFixture::BAR, new EnumFixture(EnumFixture::BAR)),
-            array((string) EnumFixture::NUMBER, new EnumFixture(EnumFixture::NUMBER)),
+            array((string)EnumFixture::NUMBER, new EnumFixture(EnumFixture::NUMBER)),
         );
     }
 
@@ -104,12 +104,12 @@ class EnumTest extends \PHPUnit\Framework\TestCase
     {
         $values = EnumFixture::values();
         $expectedValues = array(
-            "FOO"                       => new EnumFixture(EnumFixture::FOO),
-            "BAR"                       => new EnumFixture(EnumFixture::BAR),
-            "NUMBER"                    => new EnumFixture(EnumFixture::NUMBER),
-            "PROBLEMATIC_NUMBER"        => new EnumFixture(EnumFixture::PROBLEMATIC_NUMBER),
-            "PROBLEMATIC_NULL"          => new EnumFixture(EnumFixture::PROBLEMATIC_NULL),
-            "PROBLEMATIC_EMPTY_STRING"  => new EnumFixture(EnumFixture::PROBLEMATIC_EMPTY_STRING),
+            "FOO" => new EnumFixture(EnumFixture::FOO),
+            "BAR" => new EnumFixture(EnumFixture::BAR),
+            "NUMBER" => new EnumFixture(EnumFixture::NUMBER),
+            "PROBLEMATIC_NUMBER" => new EnumFixture(EnumFixture::PROBLEMATIC_NUMBER),
+            "PROBLEMATIC_NULL" => new EnumFixture(EnumFixture::PROBLEMATIC_NULL),
+            "PROBLEMATIC_EMPTY_STRING" => new EnumFixture(EnumFixture::PROBLEMATIC_EMPTY_STRING),
             "PROBLEMATIC_BOOLEAN_FALSE" => new EnumFixture(EnumFixture::PROBLEMATIC_BOOLEAN_FALSE),
         );
 
@@ -123,13 +123,13 @@ class EnumTest extends \PHPUnit\Framework\TestCase
     {
         $values = EnumFixture::toArray();
         $expectedValues = array(
-            "FOO"                   => EnumFixture::FOO,
-            "BAR"                   => EnumFixture::BAR,
-            "NUMBER"                => EnumFixture::NUMBER,
-            "PROBLEMATIC_NUMBER"    => EnumFixture::PROBLEMATIC_NUMBER,
-            "PROBLEMATIC_NULL"      => EnumFixture::PROBLEMATIC_NULL,
-            "PROBLEMATIC_EMPTY_STRING"    => EnumFixture::PROBLEMATIC_EMPTY_STRING,
-            "PROBLEMATIC_BOOLEAN_FALSE"    => EnumFixture::PROBLEMATIC_BOOLEAN_FALSE,
+            "FOO" => EnumFixture::FOO,
+            "BAR" => EnumFixture::BAR,
+            "NUMBER" => EnumFixture::NUMBER,
+            "PROBLEMATIC_NUMBER" => EnumFixture::PROBLEMATIC_NUMBER,
+            "PROBLEMATIC_NULL" => EnumFixture::PROBLEMATIC_NULL,
+            "PROBLEMATIC_EMPTY_STRING" => EnumFixture::PROBLEMATIC_EMPTY_STRING,
+            "PROBLEMATIC_BOOLEAN_FALSE" => EnumFixture::PROBLEMATIC_BOOLEAN_FALSE,
         );
 
         $this->assertSame($expectedValues, $values);
@@ -260,11 +260,17 @@ class EnumTest extends \PHPUnit\Framework\TestCase
     {
         $this->assertJsonStringEqualsJsonString('"foo"', json_encode(new EnumFixture(EnumFixture::FOO)));
         $this->assertJsonStringEqualsJsonString('"bar"', json_encode(new EnumFixture(EnumFixture::BAR)));
-        $this->assertJsonStringEqualsJsonString('42',    json_encode(new EnumFixture(EnumFixture::NUMBER)));
-        $this->assertJsonStringEqualsJsonString('0',     json_encode(new EnumFixture(EnumFixture::PROBLEMATIC_NUMBER)));
-        $this->assertJsonStringEqualsJsonString('null',  json_encode(new EnumFixture(EnumFixture::PROBLEMATIC_NULL)));
-        $this->assertJsonStringEqualsJsonString('""',    json_encode(new EnumFixture(EnumFixture::PROBLEMATIC_EMPTY_STRING)));
-        $this->assertJsonStringEqualsJsonString('false', json_encode(new EnumFixture(EnumFixture::PROBLEMATIC_BOOLEAN_FALSE)));
+        $this->assertJsonStringEqualsJsonString('42', json_encode(new EnumFixture(EnumFixture::NUMBER)));
+        $this->assertJsonStringEqualsJsonString('0', json_encode(new EnumFixture(EnumFixture::PROBLEMATIC_NUMBER)));
+        $this->assertJsonStringEqualsJsonString('null', json_encode(new EnumFixture(EnumFixture::PROBLEMATIC_NULL)));
+        $this->assertJsonStringEqualsJsonString(
+            '""',
+            json_encode(new EnumFixture(EnumFixture::PROBLEMATIC_EMPTY_STRING))
+        );
+        $this->assertJsonStringEqualsJsonString(
+            'false',
+            json_encode(new EnumFixture(EnumFixture::PROBLEMATIC_BOOLEAN_FALSE))
+        );
     }
 
     public function testNullableEnum()

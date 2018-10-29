@@ -26,6 +26,11 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^4.8.35|^5.7|^6.0",
-        "squizlabs/php_codesniffer": "1.*"
+        "squizlabs/php_codesniffer": "^3.3"
+    },
+    "scripts": {
+        "lint": "./vendor/bin/phpcs --standard=PSR2 ./src ./tests",
+        "phpcbf": "./vendor/bin/phpcbf --standard=PSR2 ./src ./tests",
+        "test": "./vendor/bin/phpunit"
     }
 }
